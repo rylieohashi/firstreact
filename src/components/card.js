@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Content from './content';
 
 import Input from './input';
 
@@ -15,10 +16,11 @@ class Card extends Component {
 
             this.handleInputChange = this.handleInputChange.bind(this);
             this.handleFormSubmit = this.handleFormSubmit.bind(this);
+
     }
 
     handleInputChange(event) {
-        this.setState({[event.target.name]: event.target.value})
+        this.setState({[event.target.name]: event.target.value })
     }
 
     handleFormSubmit(event) {
@@ -34,7 +36,7 @@ class Card extends Component {
     render() {
 
         const inputData = [
-            {title: 'Your Name', state: this.state.yourName, name: 'yourName'}
+            {title: '', state: this.state.yourName, name: 'yourName'}
         ]
 
         return (
@@ -48,7 +50,7 @@ class Card extends Component {
                 </div>
                 <button className={`card__${!this.state.contentVisible ? 'generate' : 'clear'}`} type="submit">{!this.state.contentVisible ? 'Who are you' : 'Good Bye'}</button>
                 {
-                    //this.state.contentVisible ? <Content data={this.state}/> 
+                  this.state.contentVisible ? <Content data={this.state}/> : <div></div>
                 }
         </form>
         )
